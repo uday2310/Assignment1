@@ -1,0 +1,45 @@
+<template>
+    <lightning-layout class="slds-p-around_small">
+        <lightning-layout-item size="4" padding="around-small">
+            <div class="form slds-box">
+
+                <lightning-input type="text" label="Name:" onchange={handleNameChange}></lightning-input></br>
+                <lightning-input type="number" label="Records:" onchange={handleRecordsChange}></lightning-input></br>
+                <lightning-button label="Search" onclick={handleClick} class="slds-align_absolute-center">
+                </lightning-button>
+
+            </div>
+        </lightning-layout-item>
+        <lightning-layout-item size="8" padding="around-small">
+            <div class="form slds-box">
+                <div class="slds-p-around_small slds-list_horizontal">
+
+                    <lightning-input type="text" label=" " onchange={handleFilterChange}></lightning-input>
+
+                    <lightning-button class="button" label="filter" onclick={handleFilter}></lightning-button>
+
+                </div>
+                <template if:true={myAccounts}>
+                    <template if:true={MyAccountsSize}>
+                        <template if:false={filteredAccounts}>
+                            <c-account-tile account-list={myAccounts}></c-account-tile>
+                        </template>
+
+                        <template if:true={filteredAccounts}>
+                            <c-account-tile account-list={filteredAccounts}></c-account-tile>
+                        </template>
+                    </template>
+
+                    <template if:false={MyAccountsSize}>
+                        <p class="slds-align_absolute-center">No account for this criteria.Please modify your search.
+                        </p>
+                    </template>
+                </template>
+                <template if:true={error}>
+                    <p class="slds-align_absolute-center">Something went Wrong !</p>
+                </template>
+            </div>
+        </lightning-layout-item>
+
+    </lightning-layout>
+</template>

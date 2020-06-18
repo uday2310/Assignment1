@@ -1,0 +1,17 @@
+<template>
+    <lightning-layout multiple-rows=true>
+
+        <template for:each={accountList} for:item='account'>
+            <lightning-layout-item key={account.Id} size="6" padding="around-small">
+                <lightning-card title={account.Name}>
+                    <div class="slds-p-around_small">
+                        <p><span class="slds-text-heading_small">Account No:</span> {account.AccountNumber}</p>
+                        <p><span class="slds-text-heading_small">Industry:</span> {account.Industry}</p>
+                        <p><span class="slds-text-heading_small">Rating:</span> {account.Rating}</p>
+                    </div>
+                </lightning-card>
+            </lightning-layout-item>
+        </template>
+
+    </lightning-layout>
+</template>
